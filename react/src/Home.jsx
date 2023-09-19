@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useUser } from "./UserContext"; // Import useUser from UserContext
 import { campusData } from "./data"; // Import the campus data
-import { setDoc, uploadFile } from "@junobuild/core";
+import { getDoc, setDoc, uploadFile } from "@junobuild/core";
 import { nanoid } from "nanoid";
 
-const Home = () => {
+const Home = ({ reg }) => {
   const { userCampus } = useUser(); // Access userCampus from the context
   const [hasVote, setHasVote] = useState(false);
   const [data, setData] = useState(campusData);
@@ -16,20 +16,43 @@ const Home = () => {
   const user = async () => {
     try {
       //console.log(key);
+
+      /*  await setDoc({
+        collection: "users",
+        doc: {
+          key: nanoid(),
+          data: { ...data, voted: true },
+        },
+      }); */
+      const user = await getDoc({
+        collection: "users",
+        key: reg,
+      });
+      const updatedUser = {
+        ...user.data,
+        voted: true,
+      };
+      //setHasVote(updatedUser.voted);
       await setDoc({
         collection: "users",
-        key: nanoid(),
-        data: {
-          voted: true,
+        doc: {
+          ...user,
+          data: updatedUser,
         },
       });
+      console.log(updatedUser);
     } catch (err) {
       console.log(err);
     }
   };
 
-  const handleVote = (reg) => {
-    /*  const updatedData = data.map((campus) => {
+  const vote = async () => {};
+
+  const handleVote = async (reg) => {
+    if (hasVote) {
+      alert("You have already voted!");
+    } else {
+      /*  const updatedData = data.map((campus) => {
       return {
         ...campus,
         contestants: campus.contestants.map((contestant) => {
@@ -44,10 +67,10 @@ const Home = () => {
         }),
       };
     });
-    setData(updatedData);
-    setHasVote(true); */
-    console.log(reg);
-    user();
+    setData(updatedData);*/
+      user();
+      setHasVote(true);
+    }
   };
 
   if (!userCampusData) {
@@ -68,6 +91,7 @@ const Home = () => {
       <h3 className="text-lg font-medium mt-2">
         Contestants for {userCampus}:
       </h3>
+      <p className="font-light text-xl text-gray-800">User: {reg}</p>
       <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-4">
         {contestants.map((contestant) => (
           <li
@@ -83,9 +107,9 @@ const Home = () => {
             <h4 className="text-lg font-semibold">{contestant.name}</h4>
             <p className="text-sm text-dark">{contestant.position}</p>
             {hasVote ? (
-              <div className="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
+              <div className="w-full bg-gray-200 rounded-full h-1 dark:bg-gray-700">
                 <div
-                  className="bg-blue-600 h-2.5 rounded-full"
+                  className="bg-blue-600 h-1 rounded-full"
                   style={{
                     width: "45%",
                   }}

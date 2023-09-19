@@ -2,8 +2,10 @@ import React, { useState } from "react";
 //import { useHistory } from "react-router-dom";
 import { unstable_HistoryRouter, useNavigate } from "react-router-dom";
 import { useUser } from "./UserContext";
+import { getDoc, setDoc, uploadFile } from "@junobuild/core";
+import { nanoid } from "nanoid";
 
-const Register = () => {
+const Register = ({ reg, setReg }) => {
   //const history = useHistory();
   //const history = unstable_HistoryRouter();
   const { setUserCampus } = useUser(); // Access setUserCampus from the context
@@ -11,10 +13,32 @@ const Register = () => {
   const navigate = useNavigate();
 
   const [campus, setCampus] = useState("Campus A");
-  const [reg, setReg] = useState("");
 
   const handleCampusChange = (e) => {
     setCampus(e.target.value);
+  };
+  const user = async () => {
+    try {
+      //console.log(key);
+      let user;
+      user = await getDoc({
+        collection: "users",
+        key: reg,
+      });
+      if (user == undefined)
+        await setDoc({
+          collection: "users",
+          doc: {
+            key: reg,
+            data: {
+              reg,
+              campus,
+            },
+          },
+        });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const handleSubmit = (e) => {
@@ -36,6 +60,7 @@ const Register = () => {
       console.log(`User with reg number ${reg} logged in to ${campus}`);
       setUserCampus(campus); // Set the user's campus in the context
       /* history.push("/home"); */
+      user();
       navigate("/home");
     } else {
       // Registration is invalid, display an error

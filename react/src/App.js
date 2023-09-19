@@ -1,15 +1,16 @@
 import { Background } from "./Background";
 import { Table } from "./Table";
 import { Modal } from "./Modal";
-import { initJuno } from "@junobuild/core";
+import { getDoc, initJuno, setDoc } from "@junobuild/core";
 import { Auth } from "./Auth";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Campus from "./Campus";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Register from "./Register";
 import Home from "./Home";
 import Landin from "./Landin";
 import { UserProvider } from "./UserContext";
+import { contestantData } from "./contestantData";
 
 function App() {
   // TODO: STEP_1_INITIALIZATION
@@ -19,6 +20,7 @@ function App() {
         satelliteId: "43ihf-gaaaa-aaaal-aczta-cai",
       }))();
   }, []);
+  const [reg, setReg] = useState("");
 
   return (
     <UserProvider>
@@ -33,8 +35,11 @@ function App() {
                       <Routes>
                         <Route index element={<Landin />} />
                         <Route path="campus" element={<Campus />} />
-                        <Route path="register" element={<Register />} />
-                        <Route path="home" element={<Home />} />
+                        <Route
+                          path="register"
+                          element={<Register reg={reg} setReg={setReg} />}
+                        />
+                        <Route path="home" element={<Home reg={reg} />} />
                       </Routes>
                     </Router>
                     {/* <Campus /> */}
