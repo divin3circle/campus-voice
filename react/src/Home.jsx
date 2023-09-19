@@ -5,19 +5,19 @@ import { getDoc, setDoc, uploadFile } from "@junobuild/core";
 import { nanoid } from "nanoid";
 
 const Home = ({ reg }) => {
-  const regNo = parseInt(reg);
   const { userCampus } = useUser(); // Access userCampus from the context
   const [hasVote, setHasVote] = useState(false);
   const [data, setData] = useState(campusData);
+  const [votes, setVotes] = useState(0);
 
   useEffect(() => {
     async function fetchData() {
       try {
         const userInfo = await getDoc({
           collection: "users",
-          key: regNo,
+          key: reg,
         });
-        if (userInfo.data?.voted) {
+        if (userInfo?.data?.voted) {
           setHasVote(true);
         } else {
           setHasVote(false);
@@ -47,7 +47,7 @@ const Home = ({ reg }) => {
       }); */
       const user = await getDoc({
         collection: "users",
-        key: regNo,
+        key: reg,
       });
       const updatedUser = {
         ...user.data,
@@ -70,19 +70,42 @@ const Home = ({ reg }) => {
   const vote = async () => {};
 
   const handleVote = async (reg) => {
+    console.log(reg);
+    const regNumber = String(reg);
     if (hasVote) {
       alert("You have already voted!");
     } else {
       try {
+        const contInfo = await getDoc({
+          collection: "contestants",
+          key: regNumber,
+        });
+
+        setVotes(contInfo.data.votes + 1);
+        console.log(contInfo?.data?.votes);
+        const newContInfo = {
+          ...contInfo.data,
+          votes: contInfo.data.votes + 1,
+        };
+        console.log("new: " + newContInfo);
+
         await setDoc({
           collection: "contestants",
           doc: {
-            key: reg,
+            ...contInfo,
+            data: newContInfo,
+          },
+        });
+        /*  await setDoc({
+          collection: "contestants",
+          doc: {
+            key: `{reg}`,
             data: {
               votes: 1,
             },
           },
-        });
+        }); */
+        //console.log(newContInfo.data.votes);
         user();
         setHasVote(true);
       } catch (err) {
@@ -125,13 +148,15 @@ const Home = ({ reg }) => {
             <h4 className="text-lg font-semibold">{contestant.name}</h4>
             <p className="text-sm text-dark">{contestant.position}</p>
             {hasVote ? (
-              <div className="w-full bg-gray-200 rounded-full h-1 dark:bg-gray-700">
+              <div className="w-full bg-gray-200 rounded-full h-4 dark:bg-gray-700">
                 <div
-                  className="bg-blue-600 h-1 rounded-full"
+                  className="bg-blue-300 h-4 rounded-full flex justify-center items-center p-1 font-semibold"
                   style={{
                     width: "45%",
                   }}
-                ></div>
+                >
+                  {votes} votes
+                </div>
               </div>
             ) : null}
           </li>
