@@ -4,51 +4,64 @@ import { Modal } from "./Modal";
 import { initJuno } from "@junobuild/core";
 import { Auth } from "./Auth";
 import { useEffect } from "react";
+import Campus from "./Campus";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Register from "./Register";
+import Home from "./Home";
+import Landin from "./Landin";
+import { UserProvider } from "./UserContext";
 
 function App() {
   // TODO: STEP_1_INITIALIZATION
-  // useEffect(() => {
-  //   (async () =>
-  //     await initJuno({
-  //       satelliteId: "replace-satellite-id",
-  //     }))();
-  // }, []);
+  useEffect(() => {
+    (async () =>
+      await initJuno({
+        satelliteId: "43ihf-gaaaa-aaaal-aczta-cai",
+      }))();
+  }, []);
 
   return (
-    <>
-      <div className="isolate bg-white">
-        <main>
-          <div className="relative px-6 lg:px-8">
-            <div className="mx-auto max-w-2xl pt-16">
-              <div className="text-center">
-                <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-                  Sample Juno App
-                </h1>
-                <p className="mt-6 text-lg leading-8 text-gray-600">
-                  A sample app build with React, Tailwind and{" "}
-                  <a
-                    href="https://juno.build"
-                    rel="noopener noreferrer"
-                    target="_blank"
-                    className="underline"
-                  >
-                    Juno
-                  </a>
-                  .
-                </p>
-
-                <Auth>
-                  <Table />
-
-                  <Modal />
-                </Auth>
+    <UserProvider>
+      <>
+        <div className="isolate bg-white">
+          <main>
+            <div className="relative px-6 lg:px-8">
+              <div className="mx-auto max-w-2xl pt-16">
+                <div className="text-center rounded-2xl shadow-xl p-4">
+                  <Auth>
+                    <Router>
+                      <Routes>
+                        <Route index element={<Landin />} />
+                        <Route path="campus" element={<Campus />} />
+                        <Route path="register" element={<Register />} />
+                        <Route path="home" element={<Home />} />
+                      </Routes>
+                    </Router>
+                    {/* <Campus /> */}
+                    {/* <Table /> */}
+                    {/* <Modal /> */}
+                  </Auth>
+                </div>
               </div>
+              {/*  <Background /> */}
             </div>
-            <Background />
-          </div>
-        </main>
-      </div>
-    </>
+            <div className="mt-8 flex items-center justify-center text-center">
+              <h1 className="font-semibold p-2">
+                Institution?{" "}
+                <span>
+                  <a
+                    href="#"
+                    className="font-normal text-blue-700 hover:underline hover:scale-105 ease-in duration-100"
+                  >
+                    Set up an election
+                  </a>
+                </span>
+              </h1>
+            </div>
+          </main>
+        </div>
+      </>
+    </UserProvider>
   );
 }
 

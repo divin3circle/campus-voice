@@ -2,6 +2,11 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        vote: "#1DB954",
+        dark: "#191414",
+      },
+    },
   },
 };
