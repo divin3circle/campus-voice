@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useUser } from "./UserContext"; // Import useUser from UserContext
 import { campusData } from "./data"; // Import the campus data
 import { getDoc, setDoc, uploadFile } from "@junobuild/core";
@@ -8,7 +8,27 @@ const Home = ({ reg }) => {
   const { userCampus } = useUser(); // Access userCampus from the context
   const [hasVote, setHasVote] = useState(false);
   const [data, setData] = useState(campusData);
-  // Find the campus data for the user's campus
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const userInfo = await getDoc({
+          collection: "users",
+          key: reg,
+        });
+        if (userInfo.data?.voted) {
+          setHasVote(true);
+        } else {
+          setHasVote(false);
+        }
+        console.log(userInfo);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    fetchData();
+  }, []);
+
   const userCampusData = campusData.find(
     (campus) => campus.name === userCampus
   );
@@ -52,24 +72,21 @@ const Home = ({ reg }) => {
     if (hasVote) {
       alert("You have already voted!");
     } else {
-      /*  const updatedData = data.map((campus) => {
-      return {
-        ...campus,
-        contestants: campus.contestants.map((contestant) => {
-          if (contestant.regNo === reg) {
-            return {
-              ...contestant,
-              votes: contestant.votes + 1,
-            };
-          } else {
-            return contestant;
-          }
-        }),
-      };
-    });
-    setData(updatedData);*/
-      user();
-      setHasVote(true);
+      try {
+        await setDoc({
+          collection: "contestants",
+          doc: {
+            key: reg,
+            data: {
+              votes: 1,
+            },
+          },
+        });
+        user();
+        setHasVote(true);
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
 
