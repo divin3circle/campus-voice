@@ -5,6 +5,7 @@ import { getDoc, setDoc, uploadFile } from "@junobuild/core";
 import { nanoid } from "nanoid";
 
 const Home = ({ reg }) => {
+  const regNo = parseInt(reg);
   const { userCampus } = useUser(); // Access userCampus from the context
   const [hasVote, setHasVote] = useState(false);
   const [data, setData] = useState(campusData);
@@ -14,7 +15,7 @@ const Home = ({ reg }) => {
       try {
         const userInfo = await getDoc({
           collection: "users",
-          key: reg,
+          key: regNo,
         });
         if (userInfo.data?.voted) {
           setHasVote(true);
@@ -46,7 +47,7 @@ const Home = ({ reg }) => {
       }); */
       const user = await getDoc({
         collection: "users",
-        key: reg,
+        key: regNo,
       });
       const updatedUser = {
         ...user.data,
