@@ -22,7 +22,6 @@ const Home = ({ reg }) => {
         } else {
           setHasVote(false);
         }
-        console.log(userInfo);
       } catch (err) {
         console.log(err);
       }
@@ -36,15 +35,6 @@ const Home = ({ reg }) => {
 
   const user = async () => {
     try {
-      //console.log(key);
-
-      /*  await setDoc({
-        collection: "users",
-        doc: {
-          key: nanoid(),
-          data: { ...data, voted: true },
-        },
-      }); */
       const user = await getDoc({
         collection: "users",
         key: reg,
@@ -53,7 +43,6 @@ const Home = ({ reg }) => {
         ...user.data,
         voted: true,
       };
-      //setHasVote(updatedUser.voted);
       await setDoc({
         collection: "users",
         doc: {
@@ -61,16 +50,25 @@ const Home = ({ reg }) => {
           data: updatedUser,
         },
       });
-      console.log(updatedUser);
     } catch (err) {
       console.log(err);
     }
   };
 
-  const vote = async () => {};
+  const showVote = async (n) => {
+    try {
+      const tally = await getDoc({
+        collection: "contestants",
+        key: String(n),
+      });
+      return tally?.data?.votes;
+    } catch (err) {
+      console.error("Error fetching vote tally:", err);
+      return null;
+    }
+  };
 
   const handleVote = async (reg) => {
-    console.log(reg);
     const regNumber = String(reg);
     if (hasVote) {
       alert("You have already voted!");
@@ -81,13 +79,10 @@ const Home = ({ reg }) => {
           key: regNumber,
         });
 
-        setVotes(contInfo.data.votes + 1);
-        console.log(contInfo?.data?.votes);
         const newContInfo = {
           ...contInfo.data,
           votes: contInfo.data.votes + 1,
         };
-        console.log("new: " + newContInfo);
 
         await setDoc({
           collection: "contestants",
@@ -96,16 +91,7 @@ const Home = ({ reg }) => {
             data: newContInfo,
           },
         });
-        /*  await setDoc({
-          collection: "contestants",
-          doc: {
-            key: `{reg}`,
-            data: {
-              votes: 1,
-            },
-          },
-        }); */
-        //console.log(newContInfo.data.votes);
+
         user();
         setHasVote(true);
       } catch (err) {
@@ -148,14 +134,16 @@ const Home = ({ reg }) => {
             <h4 className="text-lg font-semibold">{contestant.name}</h4>
             <p className="text-sm text-dark">{contestant.position}</p>
             {hasVote ? (
-              <div className="w-full bg-gray-200 rounded-full h-4 dark:bg-gray-700">
+              <div className="w-full mt-2 bg-gray-200 rounded-full h-4 dark:bg-gray-700">
                 <div
                   className="bg-blue-300 h-4 rounded-full flex justify-center items-center p-1 font-semibold"
                   style={{
                     width: "45%",
                   }}
                 >
-                  {votes} votes
+                  {showVote(contestant.regNo) === null
+                    ? "Error fetching vote tally"
+                    : `${showVote(contestant.regNo)} votes`}
                 </div>
               </div>
             ) : null}
