@@ -1,11 +1,17 @@
 import { signIn } from "@junobuild/core";
 
 export const Login = () => {
-  //TODO: STEP_2_AUTH_SIGN_IN
-  //
-
   return (
-    <div className="mt-10 flex items-center justify-center gap-x-6">
+    <div className="mt-10 flex-col items-center justify-center gap-x-6">
+      <div className="mb-8">
+        <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+          CampusVoice
+        </h1>
+        <h1 className="font-semibold text-gray-700 text-2xl sm:text-4xl">
+          {" "}
+          Decentralized Campus Voting
+        </h1>
+      </div>
       <button
         onClick={signIn}
         type="button"

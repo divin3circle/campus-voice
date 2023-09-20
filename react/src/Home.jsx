@@ -140,21 +140,31 @@ const Home = ({ reg }) => {
         user();
         setHasVote(true);
         showVote(regNumber);
+        toast.success("🦄 Vote submitted successfully!", {
+          position: "top-center",
+          autoClose: 2999,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
       } catch (err) {
-        console.log(err);
+        toast.error("An error occurred", {
+          position: "top-center",
+          autoClose: 4999,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+        //console.log(err);
       }
     }
     setLoading(false);
-    toast.success("🦄 Vote submitted successfully!", {
-      position: "top-center",
-      autoClose: 2999,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "colored",
-    });
   };
 
   if (!userCampusData) {
@@ -201,7 +211,7 @@ const Home = ({ reg }) => {
                     width: "45%",
                   }}
                 >
-                  {votesData[contestant.regNo]}
+                  {votesData[contestant.regNo]} votes
                 </div>
               </div>
             ) : null}

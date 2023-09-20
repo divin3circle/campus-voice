@@ -5,8 +5,8 @@ import Campus from "./Campus";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Register from "./Register";
 import Home from "./Home";
-import Landin from "./Landin";
 import { UserProvider } from "./UserContext";
+import Landing from "./Landing";
 
 function App() {
   // TODO: STEP_1_INITIALIZATION
@@ -21,15 +21,16 @@ function App() {
   return (
     <UserProvider>
       <>
-        <div className="isolate bg-white">
+        <div className="isolate h-screen bg-white">
           <main>
             <div className="relative px-6 lg:px-8">
               <div className="mx-auto max-w-2xl pt-16">
+                {/*<Landing />*/}
                 <div className="text-center rounded-2xl shadow-xl p-4">
                   <Auth>
                     <Router>
                       <Routes>
-                        <Route index element={<Landin />} />
+                        <Route index element={<Landing />} />
                         <Route path="campus" element={<Campus />} />
                         <Route
                           path="register"

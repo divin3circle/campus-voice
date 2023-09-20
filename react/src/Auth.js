@@ -9,7 +9,6 @@ export const Auth = ({ children }) => {
   const [user, setUser] = useState(undefined);
 
   useEffect(() => {
-    // TODO: STEP_4_AUTH_SUBSCRIBE
     const sub = authSubscribe((user) => setUser(user));
 
     return () => sub();
@@ -19,12 +18,12 @@ export const Auth = ({ children }) => {
     <AuthContext.Provider value={{ user }}>
       {user !== undefined && user !== null ? (
         <div>
-          <Login />
+          {children}
+          <Logout />
         </div>
       ) : (
         <div>
-          {children}
-          <Logout />
+          <Login />
         </div>
       )}
     </AuthContext.Provider>

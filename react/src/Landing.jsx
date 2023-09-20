@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Landin = () => {
+const Landing = () => {
   return (
     <div>
       <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
@@ -38,4 +38,4 @@ const Landin = () => {
   );
 };
 
-export default Landin;
+export default Landing;
