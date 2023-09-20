@@ -102,7 +102,17 @@ Before you begin, ensure you have the following installed:
 - Tailwind CSS
 - Web3 (via Juno Toolkit)
 - Node.js
-- Internet Computer
+- Internet
+
+# Deployment
+
+🚀 Check out the live deployment of our Campus Voting Website on Fleek:
+
+[![Live Deployment](https://img.shields.io/badge/Live%20Deployment-Visit%20Now-brightgreen.svg)](https://kpewl-saaaa-aaaad-qfvdq-cai.ic.fleek.co/)
+
+This deployment is hosted on Fleek and is accessible for testing and usage. Feel free to explore the website and cast your votes in the campus elections.
+
+**Deployment Link:** [https://kpewl-saaaa-aaaad-qfvdq-cai.ic.fleek.co/](https://kpewl-saaaa-aaaad-qfvdq-cai.ic.fleek.co/)
 
 ## 🤝 Contributing
 
