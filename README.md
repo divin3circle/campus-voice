@@ -77,7 +77,7 @@ Before you begin, ensure you have the following installed:
      ![Error](./demo/03.png)
 1. Once logged in successfully you will be able to see the contestants for your chosen campus and your registration number as well as shown below:
    ![Voting page](./demo/04.png)
-1. To vote for contestant just click on his/her card. The UI will then update to show you the vote tally, and a successful pop-up message as well.
+1. To vote for contestant just click on his/her card. The UI will then update to show you the vote tally, and a successful pop-up message as well. For demonstration purposes the contestants have different starting points in votes tally to help you visualize the voting process. Some user reg numbers have also already voted thus can't vote again.
    ![Vote tally](./demo/05.png)
 1. You can logout of the application by clicking the logout button below the page.
 
