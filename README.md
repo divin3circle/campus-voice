@@ -18,7 +18,7 @@ Democracy is at the heart of every civilization, and for this reason it is one o
 
 ## 🚀 Introduction
 
-The Campus Voting Website is designed to simplify the voting process for campus elections. It leverages modern web technologies such as React, Ant Design, Tailwind CSS, and Web3 through the Juno toolkit. This README will guide you through setting up and using the application.
+The Campus Voting Website is designed to simplify the voting process for campus elections. It leverages modern web technologies such as React, Ant Design, Tailwind CSS, and Web3 through the Juno toolkit. This README will guide you through setting up and using the application. It is also important to note that this application simulates a real life scenario where a campus will have a certain number of students eligible to vote, therefore we have simulated the scenario with 6 users per campus. See [Usage](#🎮-usage).
 
 ## 🛠️ Getting Started
 
