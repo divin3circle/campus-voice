@@ -11,9 +11,10 @@ Democracy is at the heart of every civilization, and for this reason it is one o
 3. [Usage](#usage)
 4. [Features](#features)
 5. [Technologies Used](#technologies-used)
-6. [Contributing](#contributing)
-7. [License](#license)
-8. [Contact](#contact)
+6. [Deployment](#deployments)
+7. [Contributing](#contributing)
+8. [License](#license)
+9. [Contact](#contact)
 
 ## 🚀 Introduction
 
@@ -104,15 +105,27 @@ Before you begin, ensure you have the following installed:
 - Node.js
 - Internet
 
-# Deployment
+## Deployments
+
+## Fleek Deployment
 
 🚀 Check out the live deployment of our Campus Voting Website on Fleek:
 
-[![Live Deployment](https://img.shields.io/badge/Live%20Deployment-Visit%20Now-brightgreen.svg)](https://kpewl-saaaa-aaaad-qfvdq-cai.ic.fleek.co/)
+[![Fleek Deployment](https://img.shields.io/badge/Fleek%20Deployment-Visit%20Now-brightgreen.svg)](https://kpewl-saaaa-aaaad-qfvdq-cai.ic.fleek.co/)
 
 This deployment is hosted on Fleek and is accessible for testing and usage. Feel free to explore the website and cast your votes in the campus elections.
 
 **Deployment Link:** [https://kpewl-saaaa-aaaad-qfvdq-cai.ic.fleek.co/](https://kpewl-saaaa-aaaad-qfvdq-cai.ic.fleek.co/)
+
+## Vercel Deployment
+
+🚀 Our Campus Voting Website is also deployed on Vercel for your convenience:
+
+[![Vercel Deployment](https://img.shields.io/badge/Vercel%20Deployment-Visit%20Now-blue.svg)](https://campus-voice.vercel.app/)
+
+You can access the website on Vercel and experience its features.
+
+**Deployment Link:** [https://your-vercel-project.vercel.app/](https://your-vercel-project.vercel.app/)
 
 ## 🤝 Contributing
 
