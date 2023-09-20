@@ -1,6 +1,3 @@
-import { Background } from "./Background";
-import { Table } from "./Table";
-import { Modal } from "./Modal";
 import { getDoc, initJuno, setDoc } from "@junobuild/core";
 import { Auth } from "./Auth";
 import { useEffect, useState } from "react";
@@ -10,7 +7,6 @@ import Register from "./Register";
 import Home from "./Home";
 import Landin from "./Landin";
 import { UserProvider } from "./UserContext";
-import { contestantData } from "./contestantData";
 
 function App() {
   // TODO: STEP_1_INITIALIZATION

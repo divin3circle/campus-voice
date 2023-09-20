@@ -1,4 +1,4 @@
-export const contestantData = [
+export const contestants = [
   {
     regNo: 1,
     votes: 1,

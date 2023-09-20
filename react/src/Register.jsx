@@ -4,6 +4,7 @@ import { unstable_HistoryRouter, useNavigate } from "react-router-dom";
 import { useUser } from "./UserContext";
 import { getDoc, setDoc, uploadFile } from "@junobuild/core";
 import { nanoid } from "nanoid";
+import { toast } from "react-toastify";
 
 const Register = ({ reg, setReg }) => {
   //const history = useHistory();
@@ -57,16 +58,26 @@ const Register = ({ reg, setReg }) => {
     // Check if the entered registration number is within the selected campus's range
     if (campusRanges[campus].includes(regNumber)) {
       // Registration is valid, you can perform the login logic here
-      console.log(`User with reg number ${reg} logged in to ${campus}`);
+      //console.log(`User with reg number ${reg} logged in to ${campus}`);
       setUserCampus(campus); // Set the user's campus in the context
       /* history.push("/home"); */
       user();
       navigate("/home");
     } else {
       // Registration is invalid, display an error
-      alert(
+      /* alert(
         "Invalid registration number for the selected campus. Please try again."
-      );
+      ); */
+      toast.warn("Invalid registration number for the selected campus!", {
+        position: "top-center",
+        autoClose: 4999,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
     }
   };
 

@@ -2,13 +2,48 @@ import React, { useEffect, useState } from "react";
 import { useUser } from "./UserContext"; // Import useUser from UserContext
 import { campusData } from "./data"; // Import the campus data
 import { getDoc, setDoc, uploadFile } from "@junobuild/core";
-import { nanoid } from "nanoid";
+import Loading from "./Loading";
+//import { contestants } from "./contestantData";
+import { toast } from "react-toastify";
+// minified version is also included
 
 const Home = ({ reg }) => {
   const { userCampus } = useUser(); // Access userCampus from the context
   const [hasVote, setHasVote] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [data, setData] = useState(campusData);
-  const [votes, setVotes] = useState(0);
+  const [votes, setVotes] = useState({});
+  const [votesData, setVotesData] = useState({});
+  const userCampusData = campusData.find(
+    (campus) => campus.name === userCampus
+  );
+
+  const { contestants } = userCampusData;
+
+  useEffect(() => {
+    // Fetch and update the vote tallies for all contestants here
+    const fetchAllVoteTallies = async () => {
+      const updatedVotesData = {};
+
+      for (const contestant of contestants) {
+        try {
+          const tally = await getDoc({
+            collection: "contestants",
+            key: String(contestant.regNo),
+          });
+
+          updatedVotesData[contestant.regNo] = tally?.data?.votes || 0;
+        } catch (err) {
+          console.error("Error fetching vote tally:", err);
+        }
+      }
+
+      // Update the state with all vote tallies
+      setVotesData(updatedVotesData);
+    };
+
+    fetchAllVoteTallies();
+  }, [contestants]);
 
   useEffect(() => {
     async function fetchData() {
@@ -28,10 +63,6 @@ const Home = ({ reg }) => {
     }
     fetchData();
   }, []);
-
-  const userCampusData = campusData.find(
-    (campus) => campus.name === userCampus
-  );
 
   const user = async () => {
     try {
@@ -61,7 +92,10 @@ const Home = ({ reg }) => {
         collection: "contestants",
         key: String(n),
       });
-      return tally?.data?.votes;
+      setVotes({
+        ...votes,
+        [n]: tally.data.votes,
+      });
     } catch (err) {
       console.error("Error fetching vote tally:", err);
       return null;
@@ -69,9 +103,20 @@ const Home = ({ reg }) => {
   };
 
   const handleVote = async (reg) => {
+    setLoading(true);
     const regNumber = String(reg);
     if (hasVote) {
-      alert("You have already voted!");
+      /*  alert("You have already voted!"); */
+      toast.error("You have already voted!", {
+        position: "top-center",
+        autoClose: 4999,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
     } else {
       try {
         const contInfo = await getDoc({
@@ -94,10 +139,22 @@ const Home = ({ reg }) => {
 
         user();
         setHasVote(true);
+        showVote(regNumber);
       } catch (err) {
         console.log(err);
       }
     }
+    setLoading(false);
+    toast.success("🦄 Vote submitted successfully!", {
+      position: "top-center",
+      autoClose: 2999,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
   };
 
   if (!userCampusData) {
@@ -110,7 +167,10 @@ const Home = ({ reg }) => {
     );
   }
 
-  const { contestants } = userCampusData; // Access contestants for the user's campus
+  // Access contestants for the user's campus
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <div className="text-center mt-4 font-mono">
@@ -141,9 +201,7 @@ const Home = ({ reg }) => {
                     width: "45%",
                   }}
                 >
-                  {showVote(contestant.regNo) === null
-                    ? "Error fetching vote tally"
-                    : `${showVote(contestant.regNo)} votes`}
+                  {votesData[contestant.regNo]}
                 </div>
               </div>
             ) : null}
