@@ -208,7 +208,7 @@ const Home = ({ reg }) => {
                 <div
                   className="bg-blue-300 h-4 rounded-full flex justify-center items-center p-1 font-semibold"
                   style={{
-                    width: "45%",
+                    width: "85%",
                   }}
                 >
                   {votesData[contestant.regNo]} votes
