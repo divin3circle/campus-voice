@@ -105,7 +105,7 @@ Before you begin, ensure you have the following installed:
 - Node.js
 - Internet
 
-## Deployments
+## 🌐 Deployments
 
 ## Fleek Deployment
 
