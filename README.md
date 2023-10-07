@@ -1,6 +1,6 @@
 # 🏫 Campus Voting Website
 
-Democracy is at the heart of every civilization, and for this reason it is one of the most targeted areas by criminal masterminds and power addicts of our modern wold. However, the recent rise of blockchain technology, more specifically the Internet Computer has given everyone the power to own and control their own data. Campus voice is a web3 application built on the Internet Computer using React, Tailwind CSS and the Juno toolkit. With Campus Voice the voting ledger is stored directly in the Internet's Computer blockchain making it immutable. This not only makes the application credible and reliable but also fast and cheap due to the Internet's Computer low gas fees.
+Democracy lies at the heart of every civilization, and for this reason it is one of the most targeted areas by criminal masterminds and power addicts in our modern world. However, the recent rise of blockchain technology, specifically the Internet Computer has given everyone the power to own, control, and safeguard their personal data. Campus voice stands as a remarkable web3 application built on the Internet Computer using React, Tailwind CSS and the Juno toolkit. With Campus Voice the voting ledger is stored directly within the Internet's Computer blockchain making it immutable. This not only makes the application credible and reliable but also fast and cheap thanks to the Internet Computer's minimal gas fees. In a world where the integrity of democracy is more important than ever, Campus Voice and the Internet Computer empower individuals to seize control and protect their democratic rights. The future of democracy is evolving, and technology like this is leading the way. 🌐🗳️ 
 
 ## 📚 Table of Contents
 
@@ -18,7 +18,7 @@ Democracy is at the heart of every civilization, and for this reason it is one o
 
 ## 🚀 Introduction
 
-The Campus Voting Website is designed to simplify the voting process for campus elections. It leverages modern web technologies such as React, Ant Design, Tailwind CSS, and Web3 through the Juno toolkit. This README will guide you through setting up and using the application. It is also important to note that this application simulates a real life scenario where a campus will have a certain number of students eligible to vote, therefore we have simulated the scenario with 6 users per campus. See [Usage](#🎮-usage).
+The Campus Voting Website is designed to streamline the campus election voting process. It leverages modern web technologies such as React, Ant Design, Tailwind CSS, and Web3, all facilitated through the Juno toolkit. This README serves as your comprehensive guide for setting up and using the application. Additionally, it is also important to note that this application simulates a real-life scenario where each campus will have a certain number of students eligible to vote. Consequently, we have simulated this scenario with 6 users per campus. See [Usage](#🎮-usage) for detailed instructions.
 
 ## 🛠️ Getting Started
 
@@ -78,7 +78,7 @@ Before you begin, ensure you have the following installed:
      ![Error](./demo/03.png)
 1. Once logged in successfully you will be able to see the contestants for your chosen campus and your registration number as well as shown below:
    ![Voting page](./demo/04.png)
-1. To vote for contestant just click on his/her card. The UI will then update to show you the vote tally, and a successful pop-up message as well. For demonstration purposes the contestants have different starting points in votes tally to help you visualize the voting process. Some user reg numbers have also already voted thus can't vote again.
+1. To vote for a contestant simply click on his/her card. The UI will then update to display the vote tally and show a successful pop-up message. The tally you see is relative to when you logged in with your registration number. To view a live tally return to the previous page and log in again. For demonstration purposes the contestants have different starting points in votes tally to help you visualize the voting process. Some user registration numbers have also already voted and thus can't vote again
    ![Vote tally](./demo/05.png)
 1. You can logout of the application by clicking the logout button below the page.
 
@@ -106,7 +106,7 @@ Before you begin, ensure you have the following installed:
 - Node.js
 - Internet
 
-## Deployments
+## 🌐 Deployments
 
 ## Fleek Deployment
 
@@ -138,8 +138,8 @@ We welcome contributions from the community. To contribute, follow these steps:
 4. Push your changes to your fork: `git push origin feature-name`.
 5. Create a pull request to the main repository.
 
-Please make sure to followther [Code of Conduct](CODE_OF_CONDUCT.md) when contributing.
+Please make sure to follow the [Code of Conduct](CODE_OF_CONDUCT.md) when contributing.
 
 ## 📧 Contact
 
-If you have any questions or suggestions, feel free to contact us at [your@email.com](mailto:sylusabel1@gmail.com).
+If you have any questions or suggestions, feel free to contact us at [sylusabel1@email.com](mailto:sylusabel1@gmail.com).
