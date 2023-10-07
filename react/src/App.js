@@ -2,11 +2,13 @@ import { getDoc, initJuno, setDoc } from "@junobuild/core";
 import { Auth } from "./Auth";
 import { useEffect, useState } from "react";
 import Campus from "./Campus";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import Register from "./Register";
 import Home from "./Home";
 import { UserProvider } from "./UserContext";
 import Landing from "./Landing";
+import SetUp from "./SetUp";
+import Footer from "./Footer";
 
 function App() {
   // TODO: STEP_1_INITIALIZATION
@@ -37,6 +39,7 @@ function App() {
                           element={<Register reg={reg} setReg={setReg} />}
                         />
                         <Route path="home" element={<Home reg={reg} />} />
+                        <Route path="setup" element={<SetUp />} />
                       </Routes>
                     </Router>
                     {/* <Campus /> */}
@@ -47,19 +50,7 @@ function App() {
               </div>
               {/*  <Background /> */}
             </div>
-            <div className="mt-8 flex items-center justify-center text-center">
-              <h1 className="font-semibold p-2">
-                Institution?{" "}
-                <span>
-                  <a
-                    href="#"
-                    className="font-normal text-blue-700 hover:underline hover:scale-105 ease-in duration-100"
-                  >
-                    Set up an election
-                  </a>
-                </span>
-              </h1>
-            </div>
+            {/*<Footer />*/}
           </main>
         </div>
       </>

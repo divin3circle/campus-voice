@@ -90,10 +90,11 @@ Before you begin, ensure you have the following installed:
 - Responsive design for various devices.
 - Real-time feedback from the blockchain
 
+**New Feature**: Institutions can now log in to the institution section and set up election details.
+
 ## 😎 Future Improvements
 
 - OTP Authentication from the Campus admin systems
-- A separate websites for campus admins to list their contestants
 - Multiple voting positions per campus
 - Migrating to include more than just campuses
 

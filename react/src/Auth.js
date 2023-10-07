@@ -18,12 +18,13 @@ export const Auth = ({ children }) => {
     <AuthContext.Provider value={{ user }}>
       {user !== undefined && user !== null ? (
         <div>
-          {children}
-          <Logout />
+          <Login />
+          
         </div>
       ) : (
         <div>
-          <Login />
+          {children}
+          <Logout />
         </div>
       )}
     </AuthContext.Provider>

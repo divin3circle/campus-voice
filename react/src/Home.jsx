@@ -179,7 +179,7 @@ const Home = ({ reg }) => {
 
   // Access contestants for the user's campus
   if (loading) {
-    return <Loading />;
+    return <Loading text="Submitting your vote to the IC blockchain⛓️..." />;
   }
 
   return (

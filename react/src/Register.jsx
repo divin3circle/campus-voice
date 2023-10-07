@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 //import { useHistory } from "react-router-dom";
-import { unstable_HistoryRouter, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useUser } from "./UserContext";
-import { getDoc, setDoc, uploadFile } from "@junobuild/core";
-import { nanoid } from "nanoid";
+import { getDoc, setDoc } from "@junobuild/core";
 import { toast } from "react-toastify";
 
 const Register = ({ reg, setReg }) => {
@@ -26,7 +25,7 @@ const Register = ({ reg, setReg }) => {
         collection: "users",
         key: reg,
       });
-      if (user == undefined)
+      if (user === undefined)
         await setDoc({
           collection: "users",
           doc: {
