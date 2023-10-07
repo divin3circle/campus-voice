@@ -1,6 +1,6 @@
 # 🏫 Campus Voting Website
 
-Democracy lies at the heart of every civilization, and for this reason it is one of the most targeted areas by criminal masterminds and power addicts in our modern world. However, the recent rise of blockchain technology, specifically the Internet Computer has given everyone the power to own, control, and safeguard their personal data. Campus voice stands as a remarkable web3 application built on the Internet Computer using React, Tailwind CSS and the Juno toolkit. With Campus Voice the voting ledger is stored directly within the Internet's Computer blockchain making it immutable. This not only makes the application credible and reliable but also fast and cheap thanks to the Internet Computer's minimal gas fees. In a world where the integrity of democracy is more important than ever, Campus Voice and the Internet Computer empower individuals to seize control and protect their democratic rights. The future of democracy is evolving, and technology like this is leading the way. 🌐🗳️ 
+Democracy lies at the heart of every civilization, and for this reason it is one of the most targeted areas by criminal masterminds and power addicts in our modern world. However, the recent rise of blockchain technology, specifically the Internet Computer has given everyone the power to own, control, and safeguard their personal data. Campus voice stands as a remarkable web3 application built on the Internet Computer using React, Tailwind CSS and the Juno toolkit. With Campus Voice the voting ledger is stored directly within the Internet's Computer blockchain making it immutable. This not only makes the application credible and reliable but also fast and cheap thanks to the Internet Computer's minimal gas fees. In a world where the integrity of democracy is more important than ever, Campus Voice and the Internet Computer empower individuals to seize control and protect their democratic rights. The future of democracy is evolving, and technology like this is leading the way. 🌐🗳️
 
 ## 📚 Table of Contents
 
@@ -90,7 +90,7 @@ Before you begin, ensure you have the following installed:
 - Responsive design for various devices.
 - Real-time feedback from the blockchain
 
-**New Feature**: Institutions can now log in to the institution section and set up election details.
+**New Feature**: Institutions can now log in to the institution section and set up election details. Visit [https://your-vercel-project.vercel.app/](https://your-vercel-project.vercel.app/) to view the latest update.
 
 ## 😎 Future Improvements
 
