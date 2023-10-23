@@ -37,7 +37,7 @@ const Landing = () => {
         </Link>
       </div>
       <section className="bg-transparent text-black">
-        <div className="mx-auto max-w-screen-xl px-4 py-8 sm:py-12 sm:px-6 lg:py-16 lg:px-8">
+        <div className="mx-auto max-w-screen-xl px-4 pt-8 sm:pt-12 sm:px-6 lg:pt-16 lg:px-8">
           <div className="mx-auto max-w-lg text-center">
             <h2 className="text-3xl font-bold sm:text-4xl">
               Why choose Decentralized Voting
@@ -50,7 +50,7 @@ const Landing = () => {
             </p>
           </div>
 
-          <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 ">
             <a
               className="block rounded-xl border border-gray-100 p-8 shadow-xl transition hover:border-blue-500 hover:shadow-blue-500/30 hover:scale-95 ease-in duration-150"
               href="/services/digital-campaigns"

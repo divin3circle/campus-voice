@@ -181,6 +181,17 @@ const Home = ({ reg }) => {
   if (loading) {
     return <Loading text="Submitting your vote to the IC blockchain⛓️..." />;
   }
+  //to be worked on
+  /*  const getTotalVotes = () => {
+    return contestants.reduce((p, i) => p + votesData[i.regNo], 0);
+  };
+
+  console.log(getTotalVotes());
+
+  const getPercentage = (regNo) => {
+    return ((votesData[regNo] / getTotalVotes()) * 100).toFixed(2);
+  };
+ */
 
   return (
     <div className="text-center mt-4 font-mono">
@@ -188,7 +199,7 @@ const Home = ({ reg }) => {
       <h3 className="text-lg font-medium mt-2">
         Contestants for {userCampus}:
       </h3>
-      <p className="font-light text-xl text-gray-800">User: {reg}</p>
+      <p className="font-semibold text-xl text-green-800">User: {reg}</p>
       <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-4">
         {contestants.map((contestant) => (
           <li

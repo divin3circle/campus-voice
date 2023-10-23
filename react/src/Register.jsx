@@ -81,7 +81,7 @@ const Register = ({ reg, setReg }) => {
   };
 
   return (
-    <div className="flex-col justify-center font-mono items-center h-screen">
+    <div className="flex-col justify-center font-mono items-centers">
       <h1 className="text-2xl sm:text-4xl font-bold p-4">
         {campus} Registration
       </h1>
@@ -92,13 +92,13 @@ const Register = ({ reg, setReg }) => {
               Select Campus:
             </label>
           </div>
-          <div>
+          <div className="flex items-center justify-center">
             <select
               id="campus"
               value={campus}
               onChange={handleCampusChange}
               name="campus"
-              className="p-2 font-mono font-semibold w-[75%]"
+              className="p-2 font-mono font-semibold w-[55%]"
             >
               <option value="Campus A" className="p-2 font-mono">
                 Campus A
@@ -112,7 +112,7 @@ const Register = ({ reg, setReg }) => {
             </select>
           </div>{" "}
         </div>
-        <div className="mb-4">
+        <div className="mb-4 flex flex-col justify-center items-center">
           <label htmlFor="reg" className="p-2 font-semibold text-lg">
             Student's Number:
           </label>
@@ -121,14 +121,14 @@ const Register = ({ reg, setReg }) => {
             value={reg}
             onChange={(e) => setReg(e.target.value)}
             name="reg"
-            className="p-2 font-mono bg-slate-200 rounded-lg focus:ring-2 ring-teal-500 font-semibold w-[55%]"
+            className="p-4 font-mono bg-slate-200  text-center rounded-lg focus:ring-2 ring-teal-500 font-semibold"
           />
         </div>
         <button
           type="submit"
           className="rounded-md bg-indigo-600 px-3.5 py-1.5 text-base font-semibold leading-7 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
         >
-          Vote
+          Proceed to vote
         </button>
       </form>
     </div>

@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import { authSubscribe } from "@junobuild/core";
 import { Login } from "./Login";
 import { Logout } from "./Logout";
+import MainFooter from "./MainFooter";
 
 export const AuthContext = createContext();
 
@@ -26,6 +27,7 @@ export const Auth = ({ children }) => {
           <Login />
         </div>
       )}
+      <MainFooter />
     </AuthContext.Provider>
   );
 };

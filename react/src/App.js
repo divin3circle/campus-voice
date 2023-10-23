@@ -9,6 +9,7 @@ import { UserProvider } from "./UserContext";
 import Landing from "./Landing";
 import SetUp from "./SetUp";
 import Footer from "./Footer";
+import MainFooter from "./MainFooter";
 
 function App() {
   // TODO: STEP_1_INITIALIZATION
